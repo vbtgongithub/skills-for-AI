@@ -1,0 +1,45 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo FORGE: file changed - verification pending. Evidence gate applies before claiming done."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo FORGE: stop check - was /forge-verify run and evidence shown for any code changed this session?"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo FORGE: if .forge/state.md exists with an unfinished task, run /forge-resume before new work."
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo FORGE: context compaction imminent - checkpoint .forge/state.md with statuses and NEXT ACTION now."
+          }
+        ]
+      }
+    ]
+  }
+}
